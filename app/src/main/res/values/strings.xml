@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">PhoneBook</string>
     <string name="save">SAVE</string>
+    <string name="processing_image">Processing Image</string>
+
+    <string-array name="media_options">
+        <item name="gallery">Choose From Gallery</item>
+        <item name="camera">Take Photo</item>
+        <item name="cancel">Cancel</item>
+    </string-array>
+
+    //just checking marshmallow permission model
+
 </resources>

@@ -8,18 +8,18 @@ import android.os.Parcelable;
  */
 
 public class ContactModel implements Parcelable {
-    String _name,_number;
-    String _profilePath;
+    public String _name, _contact,_profilePath;
 
-    public ContactModel(String _name, String _number, String _profilePath) {
+
+    public ContactModel(String _name, String _contact, String _profilePath) {
         this._name = _name;
-        this._number = _number;
+        this._contact = _contact;
         this._profilePath = _profilePath;
     }
 
     protected ContactModel(Parcel in) {
         _name = in.readString();
-        _number = in.readString();
+        _contact = in.readString();
         _profilePath = in.readString();
     }
 
@@ -43,7 +43,7 @@ public class ContactModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(_name);
-        parcel.writeString(_number);
+        parcel.writeString(_contact);
         parcel.writeString(_profilePath);
     }
 }
