@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.error_found.kotdroid.phonebook.models.pojos.ContactModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -83,6 +85,12 @@ public class ContactDatabase extends SQLiteOpenHelper {
             ContactModel contactModel = new ContactModel(name, contact, profilePath);
             list.add(contactModel);
         }
+        Collections.sort(list, new Comparator<ContactModel>() {
+            @Override
+            public int compare(ContactModel model, ContactModel t1) {
+                return model._name.compareTo(t1._name);
+            }
+        });
         return list;
     }
 

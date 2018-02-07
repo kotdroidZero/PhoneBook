@@ -1,9 +1,6 @@
 package com.error_found.kotdroid.phonebook.views.activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -31,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     protected abstract void init();
-    protected abstract Fragment getRunningFragment();
+
 
     @Override
     protected void onDestroy() {
@@ -42,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
 
     }
 

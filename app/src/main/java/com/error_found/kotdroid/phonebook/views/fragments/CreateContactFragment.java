@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.error_found.kotdroid.phonebook.R;
 import com.error_found.kotdroid.phonebook.presenters.CreateContactPresenter;
+import com.error_found.kotdroid.phonebook.views.activities.ContactActivity;
 import com.error_found.kotdroid.phonebook.views.interfaces.CreateContactView;
 
 import butterknife.BindView;
@@ -40,7 +41,7 @@ public class CreateContactFragment extends BaseFragment implements CreateContact
 
     @OnClick(R.id.tv_save)
     public void onSaveContact() {
-        createContactPresenter.saveContact(etName.getText().toString().trim()," ",
+        createContactPresenter.saveContact(etName.getText().toString().trim(), " ",
 
                 etContact.getText().toString().trim());
     }
@@ -57,14 +58,17 @@ public class CreateContactFragment extends BaseFragment implements CreateContact
 
     @OnClick(R.id.iv_cancel)
     public void onCancleClick() {
-
-        onDestroy();
+        getFragmentManager().beginTransaction().remove(this).commit();
     }
 
 
     @Override
     public void contactSaved() {
-        getFragmentManager().popBackStackImmediate();
+
+        //need to check doubt hai. can we access one View's presenter to another one
+        ((ContactActivity) getActivityContext()).contactPresenter.getLastContact();
+
+        getFragmentManager().beginTransaction().remove(this).commit();
     }
 
     @Override
@@ -77,4 +81,5 @@ public class CreateContactFragment extends BaseFragment implements CreateContact
     public void choosePhoto() {
 
     }
+
 }

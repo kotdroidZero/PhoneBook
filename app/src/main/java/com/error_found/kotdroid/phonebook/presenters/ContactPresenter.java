@@ -17,33 +17,33 @@ public class ContactPresenter {
     public ContactPresenter(ContactView contactView) {
 
         this.contactView = contactView;
-        contactInteractor=new ContactInteractor();
+        contactInteractor = new ContactInteractor();
     }
 
-    public void getLastContact()
-    {
-           contactInteractor.getLastContact(contactView.getActivityContext(), new DatabaseCallBack() {
-               @Override
-               public void fetchedAll(List<ContactModel> list) {
+    public void getLastContact() {
+        contactInteractor.getLastContact(contactView.getActivityContext(), new DatabaseCallBack() {
+            @Override
+            public void fetchedAll(List<ContactModel> list) {
 
-               }
+            }
 
-               @Override
-               public void fetchedLast(ContactModel model) {
-                   contactView.getLastContact(model);
-               }
+            @Override
+            public void fetchedLast(ContactModel model) {
+                contactView.getLastContact(model);
+            }
 
-               @Override
-               public void onSaved() {
+            @Override
+            public void onSaved() {
 
-               }
+            }
 
-               @Override
-               public void onFailure() {
+            @Override
+            public void onFailure() {
 
-               }
-           });
+            }
+        });
     }
+
     public void getAllContacts() {
         contactInteractor.getContacts(contactView.getActivityContext(),
                 new DatabaseCallBack() {

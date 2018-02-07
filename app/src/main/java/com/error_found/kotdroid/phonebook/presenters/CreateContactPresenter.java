@@ -16,7 +16,7 @@ public class CreateContactPresenter {
 
     public CreateContactPresenter(CreateContactView createContactView) {
         this.createContactView = createContactView;
-        interactor=new CreateContactInteractor();
+        interactor = new CreateContactInteractor();
     }
 
     public void saveContact(String name, String profilePath, String contactNumber) {
@@ -25,7 +25,7 @@ public class CreateContactPresenter {
         } else if (contactNumber.isEmpty() || contactNumber.length() < 10) {
             createContactView.contactError("invalid number");
         } else {
-            ContactModel model=new ContactModel(name,contactNumber,profilePath);
+            ContactModel model = new ContactModel(name, contactNumber, profilePath);
             interactor.saveContactInDB(model, createContactView.getActivityContext(),
                     new DatabaseCallBack() {
                         @Override
@@ -40,7 +40,7 @@ public class CreateContactPresenter {
 
                         @Override
                         public void onSaved() {
-                            createContactView.showMessage(0,"contact saved",
+                            createContactView.showMessage(0, "contact saved",
                                     false);
                             createContactView.contactSaved();
 

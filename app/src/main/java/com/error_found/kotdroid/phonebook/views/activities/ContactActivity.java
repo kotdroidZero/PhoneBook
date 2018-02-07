@@ -1,11 +1,9 @@
 package com.error_found.kotdroid.phonebook.views.activities;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 
 import com.error_found.kotdroid.phonebook.R;
 import com.error_found.kotdroid.phonebook.models.pojos.ContactModel;
@@ -46,7 +44,7 @@ public class ContactActivity extends BaseActivity implements ContactView {
     @Override
     protected void onResume() {
         super.onResume();
-        contactPresenter.getAllContacts();
+
 
     }
 
@@ -70,7 +68,6 @@ public class ContactActivity extends BaseActivity implements ContactView {
     }
 
 
-
     @Override
     protected void init() {
         contactPresenter = new ContactPresenter(this);
@@ -79,14 +76,10 @@ public class ContactActivity extends BaseActivity implements ContactView {
                 LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(adapter);
-        contactFragment=new CreateContactFragment();
+        contactFragment = new CreateContactFragment();
+        contactPresenter.getAllContacts();
 
 
-    }
-
-    @Override
-    protected Fragment getRunningFragment() {
-        return contactFragment;
     }
 
     @Override
