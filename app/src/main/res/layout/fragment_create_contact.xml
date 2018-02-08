@@ -53,6 +53,7 @@
     <EditText android:id="@+id/et_name"
         android:gravity="center"
         android:hint="Name"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     </android.support.design.widget.TextInputLayout>
@@ -63,7 +64,8 @@
         android:layout_height="wrap_content">
         <EditText android:id="@+id/et_contact"
             android:gravity="center"
-            android:hint="NUmber"
+            android:hint="Number"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </android.support.design.widget.TextInputLayout>

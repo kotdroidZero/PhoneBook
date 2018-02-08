@@ -104,6 +104,5 @@ public class ContactDatabase extends SQLiteOpenHelper {
         String profilePath = cursor.getString(cursor.getColumnIndex(IMAGE_PATH));
         ContactModel contactModel = new ContactModel(name, contact, profilePath);
         return contactModel;
-
     }
 }
