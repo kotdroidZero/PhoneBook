@@ -2,17 +2,19 @@ package com.error_found.kotdroid.phonebook.views.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.error_found.kotdroid.phonebook.R;
 import com.error_found.kotdroid.phonebook.models.pojos.ContactModel;
+import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -51,12 +53,14 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (holder instanceof ContactHolder) {
             ((ContactHolder) holder).tvContact.setText(list.get(position)._contact);
             ((ContactHolder) holder).tvName.setText(list.get(position)._name);
+            String filePath=list.get(position)._profilePath;
+            ((ContactHolder) holder).sdvProfile.setImageURI(Uri.fromFile(new File(filePath)));
             Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256),
                     rnd.nextInt(256),
                     rnd.nextInt(256));
             ((ContactHolder) holder).cardView.setCardBackgroundColor(color);
-            ((ContactHolder) holder).ivProfile.setImageResource(R.mipmap.ic_launcher_round);
+
 
         }
     }
@@ -73,8 +77,8 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         CardView cardView;
         @BindView(R.id.tv_name)
         TextView tvName;
-        @BindView(R.id.iv_profile)
-        ImageView ivProfile;
+        @BindView(R.id.sdv_profile)
+        SimpleDraweeView sdvProfile;
 
 
         public ContactHolder(View itemView) {

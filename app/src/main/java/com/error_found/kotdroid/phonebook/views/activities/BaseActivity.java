@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.error_found.kotdroid.phonebook.views.interfaces.BaseView;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,6 +24,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        Fresco.initialize(this);
+
         unbinder = ButterKnife.bind(this);
         init();
     }

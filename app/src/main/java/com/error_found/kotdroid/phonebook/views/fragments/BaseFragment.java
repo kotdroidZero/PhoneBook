@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.error_found.kotdroid.phonebook.views.interfaces.BaseView;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -25,6 +26,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
         return inflater.inflate(getLayoutId(), container, false);
     }
 
@@ -32,6 +34,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
+
     }
 
     @Override
@@ -62,5 +65,5 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         }
     }
 
-    protected abstract void init();
+    public abstract void init();
 }

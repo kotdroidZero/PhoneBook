@@ -1,10 +1,8 @@
 package com.error_found.kotdroid.phonebook.utils;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
@@ -13,21 +11,21 @@ import android.view.View;
  * Created by user12 on 8/2/18.
  */
 
-public class MarshMallowPemisssions {
+public class MarshMallowPermissionsMine {
 
     Activity activity;
     public static final int REQUEST_READ_STORAGE_PERMISSSION=100;
     public static final int REQUEST_WRITE_STORAGE_PERMISSSION=200;
     public static final int REQUEST_CAMERA_PERMISSSION=300;
 
-    public MarshMallowPemisssions(Activity activity) {
+    public MarshMallowPermissionsMine(Activity activity) {
         this.activity = activity;
     }
 
     public  boolean isPermissionAllowed(String permission,
                                         int requestCode)
     {
-        if (checkVersion())
+        if (isAboveLollipop())
         {
             if (ActivityCompat.checkSelfPermission(activity,permission)== PackageManager.PERMISSION_GRANTED)
             {
@@ -37,7 +35,7 @@ public class MarshMallowPemisssions {
         return false;
     }
 
-    private  boolean checkVersion() {
+    private  boolean isAboveLollipop() {
         return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
     }
 

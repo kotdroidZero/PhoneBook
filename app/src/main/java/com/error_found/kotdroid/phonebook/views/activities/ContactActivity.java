@@ -13,6 +13,7 @@ import com.error_found.kotdroid.phonebook.views.fragments.CreateContactFragment;
 import com.error_found.kotdroid.phonebook.views.interfaces.ContactView;
 
 import java.util.List;
+import java.util.logging.Handler;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -78,8 +79,6 @@ public class ContactActivity extends BaseActivity implements ContactView {
         recyclerView.setAdapter(adapter);
         contactFragment = new CreateContactFragment();
         contactPresenter.getAllContacts();
-
-
     }
 
     @Override
