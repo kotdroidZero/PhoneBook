@@ -69,6 +69,11 @@ public class CreateContactFragment extends BasePictureOptionsFragment implements
         etContact.setError(err);
     }
 
+    @Override
+    public void sessionIdErr() {
+
+    }
+
     @OnClick(R.id.iv_cancel)
     public void onCancleClick() {
         getFragmentManager().beginTransaction().remove(this).commit();

@@ -11,7 +11,8 @@ public interface BaseView {
 
     public void contactError(String err);
 
-    Context getActivityContext();
+    void sessionIdErr();
+    public Context getActivityContext();
 
     void showMessage(int resId, String string, boolean isShowSnackbarMessage);
 

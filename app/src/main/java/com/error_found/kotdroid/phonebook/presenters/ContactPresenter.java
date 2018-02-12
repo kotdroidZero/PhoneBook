@@ -11,8 +11,8 @@ import java.util.List;
  */
 
 public class ContactPresenter {
-    ContactView contactView;
-    ContactInteractor contactInteractor;
+    private ContactView contactView;
+    private ContactInteractor contactInteractor;
 
     public ContactPresenter(ContactView contactView) {
 

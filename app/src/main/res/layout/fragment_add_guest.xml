@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:padding="16dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:singleLine="true"
+            android:id="@+id/et_name"
+            android:gravity="center"
+            android:hint="Name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_gender"
+            android:gravity="center"
+            android:hint="Gender"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.design.widget.TextInputLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_gravity="center"
+        fresco:actualImageResource="@drawable/ic_photo_camera_black_24dp"
+        android:id="@+id/sdv_choose_photo"
+        android:layout_width="200dp"
+        fresco:roundAsCircle="true"
+        fresco:failureImageScaleType="centerInside"
+        android:layout_height="200dp" />
+
+    <Button
+        android:id="@+id/btn_add_guest"
+        android:layout_gravity="center"
+        android:text="Add Guest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+
+        android:indeterminate="false"
+        android:visibility="gone"
+        android:id="@+id/pb_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_marginTop="32dp"
+        android:text="see alll guests here"
+        android:id="@+id/btn_all_guests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

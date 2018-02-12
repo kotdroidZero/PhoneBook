@@ -37,6 +37,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdv_choose_photo"
         android:layout_gravity="center"
+        fresco:roundAsCircle="true"
         fresco:actualImageResource="@drawable/photo_camera"
         android:scaleType="centerInside"
         android:background="@drawable/cicle_bg"

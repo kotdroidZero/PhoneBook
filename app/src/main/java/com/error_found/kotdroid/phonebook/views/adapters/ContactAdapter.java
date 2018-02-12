@@ -28,32 +28,32 @@ import butterknife.ButterKnife;
 
 public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<ContactModel> list;
-    Context context;
-    LayoutInflater inflater;
+    private List<ContactModel> contactModelList;
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
 
-    public ContactAdapter(Context context) {
-        this.context = context;
-        list = new ArrayList<>();
-        inflater = LayoutInflater.from(context);
+    public ContactAdapter(Context mContext) {
+        this.mContext = mContext;
+        contactModelList = new ArrayList<>();
+        mLayoutInflater = LayoutInflater.from(mContext);
     }
 
     public void addContact(ContactModel model) {
-        list.add(model);
+        contactModelList.add(model);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ContactHolder(inflater.inflate(R.layout.contact_row_item,
+        return new ContactHolder(mLayoutInflater.inflate(R.layout.contact_row_item,
                 parent, false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ContactHolder) {
-            ((ContactHolder) holder).tvContact.setText(list.get(position)._contact);
-            ((ContactHolder) holder).tvName.setText(list.get(position)._name);
-            String filePath=list.get(position)._profilePath;
+            ((ContactHolder) holder).tvContact.setText(contactModelList.get(position)._contact);
+            ((ContactHolder) holder).tvName.setText(contactModelList.get(position)._name);
+            String filePath = contactModelList.get(position)._profilePath;
             ((ContactHolder) holder).sdvProfile.setImageURI(Uri.fromFile(new File(filePath)));
             Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256),
@@ -67,7 +67,7 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return contactModelList.size();
     }
 
     public class ContactHolder extends RecyclerView.ViewHolder {
@@ -75,7 +75,7 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView tvContact;
         @BindView(R.id.cardview)
         CardView cardView;
-        @BindView(R.id.tv_name)
+        @BindView(R.id.tv_name1)
         TextView tvName;
         @BindView(R.id.sdv_profile)
         SimpleDraweeView sdvProfile;

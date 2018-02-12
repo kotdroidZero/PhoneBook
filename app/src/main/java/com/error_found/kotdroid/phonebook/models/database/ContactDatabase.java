@@ -20,22 +20,22 @@ import java.util.List;
 public class ContactDatabase extends SQLiteOpenHelper {
 
     //fields
-    public static final String DATABASE_NAME = "CONTACTS_DB";
-    public static final String TABLE_NAME = "Contact_table";
-    public static final String NAME = "Name";
-    public static final String IMAGE_PATH = "Image_Path";
-    public static final String UID = "Uid";
-    public static final int DATABASE_VERSION = 1;
-    public static final String CONTACT = "Contact";
+    private static final String DATABASE_NAME = "CONTACTS_DB";
+    private static final String TABLE_NAME = "Contact_table";
+    private static final String NAME = "Name";
+    private static final String IMAGE_PATH = "Image_Path";
+    private static final String UID = "Uid";
+    private static final int DATABASE_VERSION = 1;
+    private static final String CONTACT = "Contact";
 
     //queries
-    public static final String CREATE_TABLE = " CREATE TABLE " + TABLE_NAME + "( "
+    private static final String CREATE_TABLE = " CREATE TABLE " + TABLE_NAME + "( "
             + UID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + NAME + " TEXT, "
             + IMAGE_PATH + " TEXT, "
             + CONTACT + " TEXT );";
 
-    public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
+    private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     public ContactDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -68,8 +68,7 @@ public class ContactDatabase extends SQLiteOpenHelper {
         contentValues.put(NAME, contactModel._name);
         contentValues.put(IMAGE_PATH, contactModel._profilePath);
         contentValues.put(CONTACT, contactModel._contact);
-        long id = dbWrite.insert(TABLE_NAME, null, contentValues);
-        return id;
+        return dbWrite.insert(TABLE_NAME, null, contentValues);
     }
 
     public List<ContactModel> getAllContacts() {
@@ -85,12 +84,13 @@ public class ContactDatabase extends SQLiteOpenHelper {
             ContactModel contactModel = new ContactModel(name, contact, profilePath);
             list.add(contactModel);
         }
-        Collections.sort(list, new Comparator<ContactModel>() {
+        cursor.close();
+        /*Collections.sort(list, new Comparator<ContactModel>() {
             @Override
             public int compare(ContactModel model, ContactModel t1) {
                 return model._name.compareTo(t1._name);
             }
-        });
+        });*/
         return list;
     }
 

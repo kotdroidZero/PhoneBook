@@ -11,8 +11,8 @@ import java.util.List;
  */
 
 public class CreateContactPresenter {
-    CreateContactView createContactView;
-    CreateContactInteractor interactor;
+    private CreateContactView createContactView;
+    private CreateContactInteractor interactor;
 
     public CreateContactPresenter(CreateContactView createContactView) {
         this.createContactView = createContactView;

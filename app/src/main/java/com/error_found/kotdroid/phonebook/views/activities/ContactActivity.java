@@ -62,6 +62,11 @@ public class ContactActivity extends BaseActivity implements ContactView {
 
     }
 
+    @Override
+    public void sessionIdErr() {
+
+    }
+
 
     @Override
     public Context getActivityContext() {
