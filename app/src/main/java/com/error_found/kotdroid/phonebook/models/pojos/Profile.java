@@ -16,5 +16,10 @@ public class Profile {
     public String is_present;
     public String location_lat;
     public String location_long;
+    public Profile_info profile_info;
+    public Profile_mynd profile_mynd;
+    public Notification_setting notification_setting;
+    public Privacy_setting privacy_setting;
+
 
 }

@@ -17,7 +17,6 @@
             android:name=".views.activities.ContactActivity"
             android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".views.activities.PermissionsActivity"></activity>
 
         <!-- For Camera Intent -->
         <provider

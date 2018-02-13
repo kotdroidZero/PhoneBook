@@ -4,17 +4,18 @@ import com.error_found.kotdroid.phonebook.models.pojos.PojoLogin;
 import com.error_found.kotdroid.phonebook.models.pojos.PojoUserLogin;
 
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 
 /**
@@ -24,7 +25,7 @@ public interface API {
 
 
     @FormUrlEncoded
-    @POST(WebConstants.UNIT_OWNER_LOGIN)
+    @POST(WebConstants.LOGIN)
     Call<PojoUserLogin> loginUser(@Field("email") String email,
                                             @Field("password") String password,
                                             @Field("device_type") String deviceType);
@@ -50,6 +51,11 @@ public interface API {
     Call<List<PojoUserLogin>> getAllGuests(@Query("session_id") String sessionId,
                                            @Query("timezone") String timeZone,
                                            @Query("status") String status);
+
+    @Multipart
+    @POST(WebConstants.LOGIN)
+    Call<PojoLogin> loginToMyndside(@PartMap Map<String,RequestBody> hashMap);
+
 
 
 

@@ -9,6 +9,7 @@ import com.error_found.kotdroid.phonebook.models.networkrequest.API;
 import com.error_found.kotdroid.phonebook.models.networkrequest.RestClient;
 import com.error_found.kotdroid.phonebook.models.pojos.PojoUserLogin;
 import com.error_found.kotdroid.phonebook.views.fragments.AllPostFragment;
+import com.error_found.kotdroid.phonebook.views.fragments.MsLoginFragment;
 import com.error_found.kotdroid.phonebook.views.fragments.UnitOwnerLoginFragment;
 
 import retrofit2.Call;
@@ -19,7 +20,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        getFragmentManager().beginTransaction().add(R.id.fl,new AllPostFragment())
+        getFragmentManager().beginTransaction().add(R.id.fl,new MsLoginFragment())
                 .commit();
     }
 
