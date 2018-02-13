@@ -56,13 +56,13 @@ public class AllGuestsFragment extends BaseFragment implements AllGuestView {
         presenter = new AllGuestsPresenter(this);
         Bundle bundle = getArguments();
         sessionId = bundle.getString("session_id");
-        guestsAdapter = new AllGuestsAdapter(getActivityContext(),this);
+        guestsAdapter = new AllGuestsAdapter(getContext(), this);
         LinearLayoutManager llm = new LinearLayoutManager(getActivityContext(),
                 LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(guestsAdapter);
-
         loadMore();
+
 
     }
 
@@ -73,8 +73,7 @@ public class AllGuestsFragment extends BaseFragment implements AllGuestView {
 
     @Override
     public void fetchedAllGuests(List<PojoUserLogin> loginList) {
-        if (loginList.isEmpty())
-        {
+        if (loginList.isEmpty()) {
             guestsAdapter.setLoadMore(false);
         }
         for (PojoUserLogin userLogin : loginList) {

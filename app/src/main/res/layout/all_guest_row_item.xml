@@ -5,14 +5,11 @@
     android:padding="16dp"
     android:background="@android:color/transparent"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools">
+    >
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
-
-        fresco:cardBackgroundColor="@android:color/darker_gray"
-        app:cardCornerRadius="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout

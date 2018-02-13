@@ -1,5 +1,6 @@
 package com.error_found.kotdroid.phonebook.models.networkrequest;
 
+import com.error_found.kotdroid.phonebook.models.pojos.PojoLogin;
 import com.error_found.kotdroid.phonebook.models.pojos.PojoUserLogin;
 
 import java.util.List;
@@ -36,6 +37,14 @@ public interface API {
                                  @Part("gender") RequestBody gender,
                                  @Part("status") RequestBody status,
                                  @Part("timezone") RequestBody timezone);
+
+    @GET(WebConstants.GET_ALL_POST)
+    Call<List<PojoLogin>> getPost(@Query(("session_id"))String sessionId,
+                                  @Query(("post type"))String postType,
+                                  @Query(("filter"))String filter,
+                                  @Query(("locale"))String locale,
+                                  @Query(("limit"))String limit,
+                                  @Query(("page"))String page);
 
     @GET("guest")
     Call<List<PojoUserLogin>> getAllGuests(@Query("session_id") String sessionId,

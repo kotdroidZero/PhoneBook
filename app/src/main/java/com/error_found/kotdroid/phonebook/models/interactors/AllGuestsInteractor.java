@@ -1,5 +1,7 @@
 package com.error_found.kotdroid.phonebook.models.interactors;
 
+import android.util.Log;
+
 import com.error_found.kotdroid.phonebook.models.networkrequest.API;
 import com.error_found.kotdroid.phonebook.models.networkrequest.NetworkRequestCallbacks;
 import com.error_found.kotdroid.phonebook.models.networkrequest.RestClient;
@@ -29,11 +31,16 @@ public class AllGuestsInteractor {
                 {
                     requestCallbacks.onSuccess(response);
                 }
+                else
+                {
+                    Log.e("tag of error",response.errorBody().toString());
+                }
             }
 
             @Override
             public void onFailure(Call<List<PojoUserLogin>> call, Throwable t) {
                 requestCallbacks.onError(t);
+                Log.e("throwable",t.getMessage());
             }
         });
 

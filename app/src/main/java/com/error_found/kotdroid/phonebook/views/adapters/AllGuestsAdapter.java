@@ -29,7 +29,7 @@ public class AllGuestsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private List<PojoUserLogin> guestsList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private boolean toBeMoreLoad;
+    private boolean toBeMoreLoad=true;
     private static final int LOADER = 200;
     private static final int ITEM = 100;
     private AllGuestsFragment mAllGuestFragment;
@@ -51,7 +51,8 @@ public class AllGuestsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 new GuestsHolder(mLayoutInflater.inflate(R.layout.loader_footer,
                         parent, false));
             default:
-                return null;
+                return new GuestsHolder(mLayoutInflater.inflate(R.layout.all_guest_row_item,
+                        parent, false));
         }
     }
 
@@ -65,22 +66,27 @@ public class AllGuestsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         int type = getItemViewType(position);
         if (type == ITEM) {
 
-            ((GuestsHolder) holder).sdvProfile.setImageURI(Uri.parse
-                    (guestsList.get(position).image));
-            ((GuestsHolder) holder).tvGender.setText(guestsList.get(position).gender);
-            ((GuestsHolder) holder).tvGuestId.setText(String.valueOf(guestsList.get(position).guest_id));
-            ((GuestsHolder) holder).tvName1.setText(guestsList.get(position).name);
+            if (holder instanceof GuestsHolder) {
+
+                ((GuestsHolder) holder).sdvProfile.setImageURI(Uri.parse
+                        (guestsList.get(position).image));
+                ((GuestsHolder) holder).tvGender.setText(guestsList.get(position).gender);
+                ((GuestsHolder) holder).tvGuestId.setText(String.valueOf(guestsList.get(position).guest_id));
+                ((GuestsHolder) holder).tvName1.setText(guestsList.get(position).name);
+            }
 
         } else if (type == LOADER) {
-
-            if (toBeMoreLoad) {
-                ((FooterHolder) holder).pbLoading.setVisibility(View.VISIBLE);
-                mAllGuestFragment.loadMore();
-                setLoadMore(true);
-            } else {
-                ((FooterHolder) holder).pbLoading.setVisibility(View.GONE);
-                ((FooterHolder) holder).tvDone.setVisibility(View.VISIBLE);
+            if (holder instanceof FooterHolder) {
+                if (toBeMoreLoad) {
+                    ((FooterHolder) holder).pbLoading.setVisibility(View.VISIBLE);
+                    mAllGuestFragment.loadMore();
+                    setLoadMore(true);
+                } else {
+                    ((FooterHolder) holder).pbLoading.setVisibility(View.GONE);
+                    ((FooterHolder) holder).tvDone.setVisibility(View.VISIBLE);
+                }
             }
+
 
         }
 
@@ -100,8 +106,10 @@ public class AllGuestsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public int getItemViewType(int position) {
         if (guestsList.size() == position) {
             return LOADER;
+        } else {
+            return ITEM;
         }
-        return ITEM;
+
     }
 
     public class GuestsHolder extends RecyclerView.ViewHolder {
